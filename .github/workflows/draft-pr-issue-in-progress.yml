@@ -22,6 +22,7 @@ jobs:
       if: ${{ env.issue != '' }}
       uses: peter-evans/create-or-update-project-card@v3
       with:
+        token: ${{ secrets.PAT }}
         project-location: github.repository
         project-number: 5
         column-name: In progress

@@ -18,10 +18,11 @@ jobs:
         issue=$(echo "${{ github.event.pull_request.body }}" | grep -oE '#[0-9]+' | head -n 1 | tr -d '#')
         echo "issue=$issue" >> $GITHUB_ENV
 
-    - name: Move issue to "In Progress" column
+    - name: Move issue to "In review" column
       if: ${{ env.issue != '' }}
       uses: peter-evans/create-or-update-project-card@v3
       with:
+        project-location: github.repository
         project-number: 5
-        column-name: In Progress
+        column-name: In review
         issue-number: ${{ env.issue }}

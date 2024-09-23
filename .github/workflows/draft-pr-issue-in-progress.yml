@@ -22,6 +22,6 @@ jobs:
       if: ${{ env.issue != '' }}
       uses: peter-evans/create-or-update-project-card@v3
       with:
-        project-name: sp2-Chemical-Warehouse
+        project-number: 5
         column-name: In review
         issue-number: ${{ env.issue }}

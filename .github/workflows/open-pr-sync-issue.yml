@@ -5,19 +5,11 @@ on:
     types: [opened]
 
 jobs:
-  move-issue:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: move issue to in progress
-      if: ${{ github.event.pull_request.draft }}
-      run: cat ./.github/workflows/draft-pr-issue-in-progress.yml
+  move-issue-in-progress:
+    if: ${{ github.event.pull_request.draft }}
+    uses: ./.github/workflows/draft-pr-issue-in-progress.yml
     
-
-    - name: move issue to in progress
-      if: ${{ !github.event.pull_request.draft }}
-      run: echo "not a draft pr (WIP)"
+  move-issue-in-review:
+    if: ${{ !github.event.pull_request.draft }}
+    uses: ./.github/workflows/pr-issue-in-review.yml
     

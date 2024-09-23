@@ -1,0 +1,22 @@
+name: Move Issue to "In Progress" when Draft PR is Created
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  move-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: move issue to in progress
+      if: ${{ github.event.pull_request.draft }}
+      uses: ./.github/workflows/draft-pr-issue-in-progress.yml
+
+    - name: move issue to in progress
+      if: ${{ !github.event.pull_request.draft }}
+      run: echo "not a draft pr (WIP)"
+    

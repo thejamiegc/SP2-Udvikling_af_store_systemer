@@ -1,8 +1,8 @@
 name: Move Issue to "In Progress" when Draft PR is Created
 
 on:
-  pull_request:
-    types: [opened]
+  workflow_call:
+  
 
 jobs:
   move-issue:
@@ -12,26 +12,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Check if the PR is a draft
-      id: check_draft
-      run: |
-        if [[ "${{ github.event.pull_request.draft }}" == "true" ]]; then
-          echo "This is a draft PR."
-        else
-          echo "This is not a draft PR. Exiting."
-          exit 0
-        fi
-
     - name: Extract issue number from PR description
       id: extract_issue
-      if: ${{ steps.check_draft.outputs == 'This is a draft PR.' }}
       run: |
-        # Regex to find the issue number (e.g., "Closes #123")
         issue=$(echo "${{ github.event.pull_request.body }}" | grep -oE '#[0-9]+' | head -n 1 | tr -d '#')
         echo "issue=$issue" >> $GITHUB_ENV
 
     - name: Move issue to "In Progress" column
-      if: ${{ env.issue != '' && steps.check_draft.outputs == 'This is a draft PR.' }}
+      if: ${{ env.issue != '' }}
       uses: peter-evans/create-or-update-project-card@v3
       with:
         project-name: sp2-Chemical-Warehouse

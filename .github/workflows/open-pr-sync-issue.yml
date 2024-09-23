@@ -14,7 +14,8 @@ jobs:
 
     - name: move issue to in progress
       if: ${{ github.event.pull_request.draft }}
-      uses: ./.github/workflows/draft-pr-issue-in-progress.yml
+      run: cat ./.github/workflows/draft-pr-issue-in-progress.yml
+    
 
     - name: move issue to in progress
       if: ${{ !github.event.pull_request.draft }}

@@ -8,3 +8,10 @@ Issuse are the tasks we will work on during the project. This means any work don
 
 ## Pull Requests
 We will use draft pull request to show that an issuse is beening worked on. When it comes out of draft it means the pull request is ready for review. when the pull request is merge into main then the issuse it refered ti should be resloved. 
+
+## Labels 
+As we mentioned labels will just be used to label what kind of task the issue is. Here are our labels: 
+ - Feature
+ - Documentation
+ - Bugfix
+ 

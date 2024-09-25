@@ -1,26 +1,27 @@
 ﻿using MainApplication.Models;
 using MainApplication.Repositories;
-using Microsoft.AspNetCore.Http.HttpResults;
+using MainApplication.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MainApplication.Controllers;
 
 [Route("api/Warehouse")]
 [ApiController]
-public class WarehouseController : ControllerBase
+public class WarehouseController(IWarehouseRepository warehouseRepository, IWarehouseService warehouseService)
+    : ControllerBase
 {
-    private readonly IWarehouseRepository _warehouseRepository;
-
-    public WarehouseController(IWarehouseRepository warehouseRepository)
-    {
-        _warehouseRepository = warehouseRepository;
-    }
-
-
     [HttpGet(Name = "GetWarehouse")]
     public async Task<ActionResult<Warehouse>> GetWarehouseList()
     {
-        var warehouses = await _warehouseRepository.GetWarehousesAsync();
+        var warehouses = await warehouseRepository.GetWarehousesAsync();
         return Ok(warehouses);
     }
+    
+    [HttpGet("ValidateTicket/{code}")]
+    public async Task<ActionResult<bool>> ValidateTicket(string code)
+    {
+        var isValid = await warehouseService.ValidateTicketAsync(code);
+        return Ok(isValid);
+    }
+    
 }

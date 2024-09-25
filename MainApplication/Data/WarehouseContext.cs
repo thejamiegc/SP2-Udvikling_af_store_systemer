@@ -1,13 +1,14 @@
 ﻿using MainApplication.Models;
+using MainApplication.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace MainApplication.Data
 {
-    public class WarehouseContext : DbContext
+    public class WarehouseContext(DbContextOptions<WarehouseContext> options) : DbContext(options)
     {
-        public WarehouseContext(DbContextOptions<WarehouseContext> options) : base(options) { }
-
         public DbSet<Warehouse> Warehouses { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +21,10 @@ namespace MainApplication.Data
             
             modelBuilder.Entity<Chemical>()
                 .HasKey(c => c.Id); // Define primary key for Chemical
+            
+            modelBuilder.Entity<Ticket>().HasKey(t => t.Id);
+
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

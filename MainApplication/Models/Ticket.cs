@@ -10,8 +10,14 @@ namespace MainApplication.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [SwaggerSchema(ReadOnly = true)]
         public int Id { get; set; }
-        public Warehouse ShipmentDetails { get; set; }
         public bool IsValid { get; set; }
-        public string DepotName { get; set; }
+        public string? DepotName { get; set; }
+
+        [ForeignKey("WarehouseId")]
+        public Warehouse? ShipmentDetails { get; set; }
+        public int? WarehouseId { get; set; }
+
+        [Required]
+        public string Code { get; set; } = string.Empty;
     }
 }

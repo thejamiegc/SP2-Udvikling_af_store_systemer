@@ -14,9 +14,9 @@ namespace MainApplication.Repositories
             {
                 Id = w.Id,
                 WarehouseName = w.WarehouseName,
-                capacity = w.capacity,
+                Capacity = w.Capacity,
                 Chemicals = w.Chemicals
-            }).ToListAsync<Warehouse>();
+            }).ToListAsync();
         }
     }
 }

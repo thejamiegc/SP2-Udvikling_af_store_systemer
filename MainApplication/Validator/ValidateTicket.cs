@@ -4,7 +4,26 @@ namespace MainApplication.Validator
     {
         public bool IsValidTicket(string code)
         {
-            return !string.IsNullOrEmpty(code) && code.Length == 10; // Example validation
+            if (code.Contains("warehouse 1") && code.Contains("chemical b"))
+            {
+                return false;
+            }
+            else if (code.Contains("warehouse 1") && code.Contains("chemical a"))
+            {
+                return true;
+            }
+            else if (code.Contains("warehouse 2") && code.Contains("chemical a"))
+            {
+                return false;
+            }
+            else if (code.Contains("warehouse 2") && code.Contains("chemical b"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

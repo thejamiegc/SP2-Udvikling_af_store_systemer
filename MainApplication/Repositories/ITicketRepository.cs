@@ -6,5 +6,6 @@ namespace MainApplication.Repositories
     {
         Task<Ticket?> GetTicketByCodeAsync(string code);
         Task UpdateTicketAsync(Ticket ticket);
+        Task<IEnumerable<Ticket>> GetAllTicketsAsync();
     }
 }

@@ -18,15 +18,16 @@ public class WarehouseService : IWarehouseService
     public async Task<bool> ValidateTicketAsync(string code)
     {
         var isValid = _validateTicket.IsValidTicket(code);
-        if (isValid)
-        {
-            var ticket = await _ticketRepository.GetTicketByCodeAsync(code);
-            if (ticket != null)
-            {
-                ticket.IsValid = true;
-                await _ticketRepository.UpdateTicketAsync(ticket);
-            }
-        }
+        var ticket = await _ticketRepository.GetTicketByCodeAsync(code);
+        if (ticket == null) return isValid;
+        ticket.IsValid = isValid;
+        await _ticketRepository.UpdateTicketAsync(ticket);
         return isValid;
     }
+
+    public async Task<IEnumerable<Ticket>> GetAllTicketsAsync()
+    {
+       return await _ticketRepository.GetAllTicketsAsync(); 
+    }
 }
+ 

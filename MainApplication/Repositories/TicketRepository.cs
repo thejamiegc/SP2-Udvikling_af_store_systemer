@@ -23,5 +23,10 @@ namespace MainApplication.Repositories
             _context.Tickets.Update(ticket);
             await _context.SaveChangesAsync();
         }
+        
+        public async Task<IEnumerable<Ticket>> GetAllTicketsAsync()
+        {
+            return await _context.Tickets.ToListAsync();
+        }
     }
 }

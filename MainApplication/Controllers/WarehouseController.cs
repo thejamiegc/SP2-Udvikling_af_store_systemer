@@ -23,5 +23,12 @@ public class WarehouseController(IWarehouseRepository warehouseRepository, IWare
         var isValid = await warehouseService.ValidateTicketAsync(code);
         return Ok(isValid);
     }
+
+    [HttpGet("GetAllTickets")]
+    public async Task<ActionResult<IEnumerable<Ticket>>> GetAllTickets()
+    {
+        var tickets = await warehouseService.GetAllTicketsAsync();
+        return Ok(tickets);
     
+    } 
 }

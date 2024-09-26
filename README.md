@@ -2,6 +2,7 @@
 
 ## The project board 
 We chose to use Github Projects as a remote kanban board this also being the base for our template, As we already are familiar with the concept from working with them in the past, and find them intuitive and easy to use.
+https://github.com/users/thejamiegc/projects/5
 
 ## Issues
 Issues are the tasks we'll be working on during this assignment. This means that any work done should be made into an issue. In other words: Issues will be function as our features, bugfixes and documentation tasks. These types of tasks will be made into labels. Enabling us to easier differentiate between the issues and tell them apart. If an issue has multiple steps (i.e the issue has a need to be seperated into smaller manageble pieces possibly due to scale or complexity) we'll then create suptasks inside the Issue as a way of handling this. We will also make use of draft issues to contain our user stories. This way we know what user stories we are working on, in this current sprint. Draft Issues wil onlly be left in the backlogs for as long as they are in the draft state.

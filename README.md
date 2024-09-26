@@ -2,7 +2,6 @@
 
  - Group name: **TofuBytes** 
  - Members: **Isak, Jamie & Helena**
- - 
 ## The project board 
 We chose to use Github Projects as a remote kanban board this also being the base for our template, As we already are familiar with the concept from working with them in the past, and find them intuitive and easy to use.
 https://github.com/users/thejamiegc/projects/5
